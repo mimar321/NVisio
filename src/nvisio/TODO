@@ -1,0 +1,18 @@
+1   add support for jcat config
+    - read config from jcat
+    - save config to jcat file
+2   add support for nss config file
+    - read config
+    - save config
+3   parse nsshist commands to simulate the network behavior
+4   fix collision detection when dragging unit to > 1 colliding unit
+5
+
+
+
+
+
+#### CONSTANT TASKs (WOC-way of coding) ####
+1 REFACTOR CODE
+2 SAVE CODE
+3 USE GIT HUB so you have revisions
