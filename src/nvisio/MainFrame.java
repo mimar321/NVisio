@@ -39,13 +39,15 @@ public class MainFrame extends javax.swing.JFrame {
         jMenuItem1 = new javax.swing.JMenuItem();
         jPanel1 = new javax.swing.JPanel();
         jMenuBar1 = new javax.swing.JMenuBar();
-        jMenu2 = new javax.swing.JMenu();
+        jMenuFile = new javax.swing.JMenu();
         jMenuItemOpen = new javax.swing.JMenuItem();
         jMenuItemSaveXml = new javax.swing.JMenuItem();
         jMenuItemSaveImage = new javax.swing.JMenuItem();
         jSeparator1 = new javax.swing.JPopupMenu.Separator();
         jMenuItem2 = new javax.swing.JMenuItem();
-        jMenu3 = new javax.swing.JMenu();
+        jMenuEdit = new javax.swing.JMenu();
+        jMenuDebug = new javax.swing.JMenu();
+        jMenuItemSimulate = new javax.swing.JMenuItem();
 
         jMenu1.setText("jMenu1");
 
@@ -70,9 +72,9 @@ public class MainFrame extends javax.swing.JFrame {
 
         setExtendedState(MAXIMIZED_BOTH);
 
-        jMenu2.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        jMenu2.setText("File");
-        jMenu2.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jMenuFile.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        jMenuFile.setText("File");
+        jMenuFile.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
         jMenuItemOpen.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_O, java.awt.event.InputEvent.CTRL_MASK));
         jMenuItemOpen.setText("Open XML");
@@ -86,7 +88,7 @@ public class MainFrame extends javax.swing.JFrame {
                 jMenuItemOpenActionPerformed(evt);
             }
         });
-        jMenu2.add(jMenuItemOpen);
+        jMenuFile.add(jMenuItemOpen);
 
         jMenuItemSaveXml.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_S, java.awt.event.InputEvent.CTRL_MASK));
         jMenuItemSaveXml.setText("Save as XML");
@@ -95,7 +97,7 @@ public class MainFrame extends javax.swing.JFrame {
                 jMenuItemSaveXmlActionPerformed(evt);
             }
         });
-        jMenu2.add(jMenuItemSaveXml);
+        jMenuFile.add(jMenuItemSaveXml);
 
         jMenuItemSaveImage.setText("Save as image");
         jMenuItemSaveImage.addActionListener(new java.awt.event.ActionListener() {
@@ -103,16 +105,28 @@ public class MainFrame extends javax.swing.JFrame {
                 jMenuItemSaveImageActionPerformed(evt);
             }
         });
-        jMenu2.add(jMenuItemSaveImage);
-        jMenu2.add(jSeparator1);
+        jMenuFile.add(jMenuItemSaveImage);
+        jMenuFile.add(jSeparator1);
 
         jMenuItem2.setText("Exit");
-        jMenu2.add(jMenuItem2);
+        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem2ActionPerformed(evt);
+            }
+        });
+        jMenuFile.add(jMenuItem2);
 
-        jMenuBar1.add(jMenu2);
+        jMenuBar1.add(jMenuFile);
 
-        jMenu3.setText("Edit");
-        jMenuBar1.add(jMenu3);
+        jMenuEdit.setText("Edit");
+        jMenuBar1.add(jMenuEdit);
+
+        jMenuDebug.setText("Debug");
+
+        jMenuItemSimulate.setText("Simulate");
+        jMenuDebug.add(jMenuItemSimulate);
+
+        jMenuBar1.add(jMenuDebug);
 
         setJMenuBar(jMenuBar1);
 
@@ -168,16 +182,22 @@ public class MainFrame extends javax.swing.JFrame {
         }        
     }//GEN-LAST:event_jMenuItemSaveImageActionPerformed
 
+    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+        System.exit(0);
+    }//GEN-LAST:event_jMenuItem2ActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu2;
-    private javax.swing.JMenu jMenu3;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenu jMenuDebug;
+    private javax.swing.JMenu jMenuEdit;
+    private javax.swing.JMenu jMenuFile;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItemOpen;
     private javax.swing.JMenuItem jMenuItemSaveImage;
     private javax.swing.JMenuItem jMenuItemSaveXml;
+    private javax.swing.JMenuItem jMenuItemSimulate;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPopupMenu.Separator jSeparator1;
     // End of variables declaration//GEN-END:variables

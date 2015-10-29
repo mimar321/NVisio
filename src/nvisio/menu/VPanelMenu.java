@@ -46,17 +46,13 @@ public class VPanelMenu extends JPopupMenu{
         
         JMenuItem addDuItem = new JMenuItem("Add new DU");
         JMenuItem addRuItem = new JMenuItem("Add new RU");
-        JMenuItem saveItem  = new JMenuItem("Save");
         addDuItem.addActionListener(new ActionListener() { 
                 public void actionPerformed(ActionEvent e) { addDU(); } });
         addRuItem.addActionListener(new ActionListener() { 
                 public void actionPerformed(ActionEvent e) { addRU(); } });
-        saveItem.addActionListener(new ActionListener() { 
-                public void actionPerformed(ActionEvent e) { save(); } });
-        
+
         this.add(addDuItem);
         this.add(addRuItem);
-        this.add(saveItem);
     }
     
     public void addDU(){
