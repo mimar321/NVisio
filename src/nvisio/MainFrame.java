@@ -5,7 +5,17 @@
  */
 package nvisio;
 
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.imageio.ImageIO;
+import javax.swing.JFileChooser;
+import nvisio.menu.VPanelMenu;
 import nvisio.unit.Port;
+import sun.awt.image.ImageAccessException;
 
 /**
  *
@@ -30,9 +40,11 @@ public class MainFrame extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu2 = new javax.swing.JMenu();
-        jMenu4 = new javax.swing.JMenu();
-        jMenu6 = new javax.swing.JMenu();
         jMenuItemOpen = new javax.swing.JMenuItem();
+        jMenuItemSaveXml = new javax.swing.JMenuItem();
+        jMenuItemSaveImage = new javax.swing.JMenuItem();
+        jSeparator1 = new javax.swing.JPopupMenu.Separator();
+        jMenuItem2 = new javax.swing.JMenuItem();
         jMenu3 = new javax.swing.JMenu();
 
         jMenu1.setText("jMenu1");
@@ -62,14 +74,8 @@ public class MainFrame extends javax.swing.JFrame {
         jMenu2.setText("File");
         jMenu2.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
-        jMenu4.setText("Save");
-        jMenu2.add(jMenu4);
-
-        jMenu6.setText("Save as image");
-        jMenu2.add(jMenu6);
-
         jMenuItemOpen.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_O, java.awt.event.InputEvent.CTRL_MASK));
-        jMenuItemOpen.setText("Open...");
+        jMenuItemOpen.setText("Open XML");
         jMenuItemOpen.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseReleased(java.awt.event.MouseEvent evt) {
                 jMenuItemOpenMouseReleased(evt);
@@ -81,6 +87,27 @@ public class MainFrame extends javax.swing.JFrame {
             }
         });
         jMenu2.add(jMenuItemOpen);
+
+        jMenuItemSaveXml.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_S, java.awt.event.InputEvent.CTRL_MASK));
+        jMenuItemSaveXml.setText("Save as XML");
+        jMenuItemSaveXml.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemSaveXmlActionPerformed(evt);
+            }
+        });
+        jMenu2.add(jMenuItemSaveXml);
+
+        jMenuItemSaveImage.setText("Save as image");
+        jMenuItemSaveImage.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemSaveImageActionPerformed(evt);
+            }
+        });
+        jMenu2.add(jMenuItemSaveImage);
+        jMenu2.add(jSeparator1);
+
+        jMenuItem2.setText("Exit");
+        jMenu2.add(jMenuItem2);
 
         jMenuBar1.add(jMenu2);
 
@@ -110,24 +137,48 @@ public class MainFrame extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jMenuItemOpenMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuItemOpenMouseReleased
-        VPanel vp = (VPanel)jPanel1;
-        vp.clearUnits();
-        vp.getVPanelMenu().open();
+
     }//GEN-LAST:event_jMenuItemOpenMouseReleased
 
     private void jMenuItemOpenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemOpenActionPerformed
-        // TODO add your handling code here:
+        VPanel vp = (VPanel)jPanel1;
+        vp.clearUnits();
+        vp.getVPanelMenu().open();
     }//GEN-LAST:event_jMenuItemOpenActionPerformed
+
+    private void jMenuItemSaveXmlActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemSaveXmlActionPerformed
+        VPanel vp = (VPanel)jPanel1;
+        vp.getVPanelMenu().save();
+    }//GEN-LAST:event_jMenuItemSaveXmlActionPerformed
+
+    private void jMenuItemSaveImageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemSaveImageActionPerformed
+        VPanel vp = (VPanel)jPanel1;
+        JFileChooser fc = new JFileChooser();
+        int retVal = fc.showSaveDialog(vp.getParent());
+        
+        if (retVal == JFileChooser.APPROVE_OPTION){
+            File fi = fc.getSelectedFile();
+            try {
+                BufferedImage bi = new BufferedImage(vp.getWidth(), vp.getHeight(), BufferedImage.TYPE_INT_RGB);
+                vp.paintAll(bi.getGraphics());
+                ImageIO.write(bi, "png", fi);
+            } catch (IOException ex) {
+                Logger.getLogger(VPanelMenu.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }        
+    }//GEN-LAST:event_jMenuItemSaveImageActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
-    private javax.swing.JMenu jMenu4;
-    private javax.swing.JMenu jMenu6;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItemOpen;
+    private javax.swing.JMenuItem jMenuItemSaveImage;
+    private javax.swing.JMenuItem jMenuItemSaveXml;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPopupMenu.Separator jSeparator1;
     // End of variables declaration//GEN-END:variables
 }
