@@ -38,6 +38,9 @@
                 <Property name="accelerator" type="javax.swing.KeyStroke" editor="org.netbeans.modules.form.editors.KeyStrokeEditor">
                   <KeyStroke key="Ctrl+O"/>
                 </Property>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="2" name="C:\Users\esinhep\Desktop\Open_file.png"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Open XML"/>
               </Properties>
               <Events>
@@ -50,6 +53,9 @@
                 <Property name="accelerator" type="javax.swing.KeyStroke" editor="org.netbeans.modules.form.editors.KeyStrokeEditor">
                   <KeyStroke key="Ctrl+S"/>
                 </Property>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="2" name="C:\Users\esinhep\Desktop\document_save.png"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Save as XML"/>
               </Properties>
               <Events>
@@ -58,6 +64,9 @@
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="jMenuItemSaveImage">
               <Properties>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="2" name="C:\Users\esinhep\Desktop\Preview-icon.png"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Save as image"/>
               </Properties>
               <Events>
@@ -68,6 +77,9 @@
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="jMenuItem2">
               <Properties>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/nvisio/resources/port_b_2.png"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Exit"/>
               </Properties>
               <Events>
@@ -88,8 +100,14 @@
           <SubComponents>
             <MenuItem class="javax.swing.JMenuItem" name="jMenuItemSimulate">
               <Properties>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/nvisio/resources/port_o.png"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Simulate"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItemSimulateActionPerformed"/>
+              </Events>
             </MenuItem>
           </SubComponents>
         </Menu>

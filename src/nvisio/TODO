@@ -6,7 +6,9 @@
     - save config
 3   parse nsshist commands to simulate the network behavior
 4   fix collision detection when dragging unit to > 1 colliding unit
-5
+5   XMU
+6   CT10
+
 
 
 

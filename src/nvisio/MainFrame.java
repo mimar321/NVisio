@@ -77,6 +77,7 @@ public class MainFrame extends javax.swing.JFrame {
         jMenuFile.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
         jMenuItemOpen.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_O, java.awt.event.InputEvent.CTRL_MASK));
+        jMenuItemOpen.setIcon(new javax.swing.ImageIcon("C:\\Users\\esinhep\\Desktop\\Open_file.png")); // NOI18N
         jMenuItemOpen.setText("Open XML");
         jMenuItemOpen.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseReleased(java.awt.event.MouseEvent evt) {
@@ -91,6 +92,7 @@ public class MainFrame extends javax.swing.JFrame {
         jMenuFile.add(jMenuItemOpen);
 
         jMenuItemSaveXml.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_S, java.awt.event.InputEvent.CTRL_MASK));
+        jMenuItemSaveXml.setIcon(new javax.swing.ImageIcon("C:\\Users\\esinhep\\Desktop\\document_save.png")); // NOI18N
         jMenuItemSaveXml.setText("Save as XML");
         jMenuItemSaveXml.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -99,6 +101,7 @@ public class MainFrame extends javax.swing.JFrame {
         });
         jMenuFile.add(jMenuItemSaveXml);
 
+        jMenuItemSaveImage.setIcon(new javax.swing.ImageIcon("C:\\Users\\esinhep\\Desktop\\Preview-icon.png")); // NOI18N
         jMenuItemSaveImage.setText("Save as image");
         jMenuItemSaveImage.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -108,6 +111,7 @@ public class MainFrame extends javax.swing.JFrame {
         jMenuFile.add(jMenuItemSaveImage);
         jMenuFile.add(jSeparator1);
 
+        jMenuItem2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/nvisio/resources/port_b_2.png"))); // NOI18N
         jMenuItem2.setText("Exit");
         jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -123,7 +127,13 @@ public class MainFrame extends javax.swing.JFrame {
 
         jMenuDebug.setText("Debug");
 
+        jMenuItemSimulate.setIcon(new javax.swing.ImageIcon(getClass().getResource("/nvisio/resources/port_o.png"))); // NOI18N
         jMenuItemSimulate.setText("Simulate");
+        jMenuItemSimulate.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemSimulateActionPerformed(evt);
+            }
+        });
         jMenuDebug.add(jMenuItemSimulate);
 
         jMenuBar1.add(jMenuDebug);
@@ -185,6 +195,11 @@ public class MainFrame extends javax.swing.JFrame {
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
         System.exit(0);
     }//GEN-LAST:event_jMenuItem2ActionPerformed
+
+    private void jMenuItemSimulateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemSimulateActionPerformed
+        SimulateFrame sf = new SimulateFrame();
+        sf.setVisible(true);
+    }//GEN-LAST:event_jMenuItemSimulateActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenu jMenu1;
