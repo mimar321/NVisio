@@ -10,7 +10,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JMenuItem;
 import javax.swing.JPopupMenu;
-import nvisio.ProperyFrame;
 import nvisio.VPanel;
 import nvisio.mouse.PortMouseAdapter;
 import nvisio.unit.Port;
@@ -27,7 +26,7 @@ public class PortMenu extends JPopupMenu{
     public PortMenu(Port port){
         this.port = port;
 
-        this.addMenuItem(connectPortAction(),        "Connect port...");
+        //this.addMenuItem(connectPortAction(),        "Connect port...");
         this.addMenuItem(disconnectPortAction(),     "Disconnect port...");
         this.addMenuItem(showPortPropertiesAction(), "Properties");
     }
@@ -38,15 +37,15 @@ public class PortMenu extends JPopupMenu{
         this.add(item);
     }
     
-    private ActionListener connectPortAction(){
-        final Port portF = this.port;
-        return new ActionListener() {
-                @Override
-                public void actionPerformed(ActionEvent e) {
-                    VPanel.setConnectingPort(portF);
-                }
-            };
-    }
+//    private ActionListener connectPortAction(){
+//        final Port portF = this.port;
+//        return new ActionListener() {
+//                @Override
+//                public void actionPerformed(ActionEvent e) {
+//                    VPanel.setConnectingPort(portF);
+//                }
+//            };
+//    }
     
     private ActionListener disconnectPortAction(){
         final Container c = this.port.getUnit().getParent();

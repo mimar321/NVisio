@@ -19,6 +19,8 @@ public class XMU03Unit extends Unit{
         this.numberOfPorts = 10;
         this.parent = panel;
         this.parent.add(this);
+        this.unitName = "XMU03";
+        this.unitType = UnitType.XMU03;
         
         this.setDefaultIcon();
         Dimension size = this.getPreferredSize();
@@ -29,19 +31,27 @@ public class XMU03Unit extends Unit{
     
     @Override
     public Point getPortLocation(Port p) {
+        double portDistance = 1.1;
+        double portSeparation = 5;
         int h = (int)p.getPreferredSize().getHeight();
         Port c = p.getRemotePort();
-        int yOffset = (int)((this.getHeight() - (int)(8.5*h)) /2);
+        int yOffset = (int)((this.getHeight() - (int)(this.numberOfPorts*h*portDistance-(portDistance-1)*h)) /2);
+        
+        if (p.getPortIndex() > 4){
+            yOffset += portSeparation*1.5;
+        } else {
+            yOffset -= portSeparation;
+        }
         
         if (c != null){
             if (c.getX() < this.getX() + this.getWidth()/2){
                 return new Point(this.getX() - (int)p.getWidth(), 
-                         this.getY() + yOffset + (int)(p.getPortIndex()*h*1.5));
+                         this.getY() + yOffset + (int)(p.getPortIndex()*h*portDistance));
             }
         }
         
         return new Point(this.getX() + (int)this.getWidth(), 
-                         this.getY() + yOffset + (int)(p.getPortIndex()*h*1.5));
+                         this.getY() + yOffset + (int)(p.getPortIndex()*h*portDistance));
     }
 
     @Override

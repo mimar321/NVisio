@@ -28,6 +28,7 @@ import nvisio.unit.DigitalUnit;
 import nvisio.unit.Port;
 import nvisio.unit.RadioUnit;
 import nvisio.unit.Unit;
+import nvisio.unit.XMU03Unit;
 import nvisio.unit.beans.DigitalUnitBean;
 import nvisio.unit.beans.NetworkConfigBean;
 import nvisio.unit.beans.PortBean;
@@ -46,13 +47,17 @@ public class VPanelMenu extends JPopupMenu{
         
         JMenuItem addDuItem = new JMenuItem("Add new DU");
         JMenuItem addRuItem = new JMenuItem("Add new RU");
-        addDuItem.addActionListener(new ActionListener() { 
+        JMenuItem addXmu03Item = new JMenuItem("Add new XMU03");
+        addDuItem.addActionListener(new ActionListener() { @Override
                 public void actionPerformed(ActionEvent e) { addDU(); } });
-        addRuItem.addActionListener(new ActionListener() { 
+        addRuItem.addActionListener(new ActionListener() { @Override
                 public void actionPerformed(ActionEvent e) { addRU(); } });
+        addXmu03Item.addActionListener(new ActionListener() { @Override
+                public void actionPerformed(ActionEvent e) { addXmu03(); } });
 
         this.add(addDuItem);
         this.add(addRuItem);
+        this.add(addXmu03Item);
     }
     
     public void addDU(){
@@ -62,6 +67,10 @@ public class VPanelMenu extends JPopupMenu{
     public void addRU(){
         Point m = panel.getMouseLocation();
         panel.getUnits().add(new RadioUnit(panel, (int)m.getX(), (int)m.getY()));
+    }
+    public void addXmu03(){
+        Point m = panel.getMouseLocation();
+        panel.getUnits().add(new XMU03Unit(panel, (int)m.getX(), (int)m.getY()));
     }
     
     public void save(){

@@ -40,14 +40,19 @@ public class PortMouseAdapter extends MouseAdapter {
            //port.setPortType(Port.PortType.SLAVE);
            port.getUnit().updatePortLocations();
            VPanel.getConnectingPort().getUnit().updatePortLocations();
+           VPanel.setConnectingPort(null);
+        } else if (VPanel.getConnectingPort() != null){
+            VPanel.setConnectingPort(null);
+        } else {
+            VPanel.setConnectingPort(this.port);
         }
-        VPanel.setConnectingPort(null);
         //System.out.println("mouse pressed on port");
     }
 
     @Override
     public void mouseReleased(MouseEvent ev) {
         if (SwingUtilities.isRightMouseButton(ev)) {
+            VPanel.setConnectingPort(null);
             this.port.getPortMenu().show(ev.getComponent(), ev.getX(), ev.getY());
         }
     }
@@ -71,5 +76,11 @@ public class PortMouseAdapter extends MouseAdapter {
     @Override
     public void mouseMoved(java.awt.event.MouseEvent evt){
         this.port.getUnit().getPanel().repaint();
+    }
+    
+    @Override
+    public void mouseDragged(MouseEvent e) {
+        System.out.println("MOUSE DRAGGED");
+        
     }
 }

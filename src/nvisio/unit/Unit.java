@@ -25,7 +25,8 @@ import nvisio.mouse.UnitMouseAdapter;
 abstract public class Unit extends JLabel{
     public enum UnitType {
         DIGITAL_UNIT,
-        RADIO_UNIT
+        RADIO_UNIT,
+        XMU03
     }
     
     List<Port> ports;
