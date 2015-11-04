@@ -44,6 +44,7 @@ abstract public class Unit extends JLabel{
             Port p = new Port(parent, this, i);
             this.ports.add(p);
         }
+        this.updatePortLocations();
         
         this.unitMouseAdapter = new UnitMouseAdapter(this);
         addMouseListener(unitMouseAdapter);

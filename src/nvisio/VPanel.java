@@ -16,6 +16,7 @@ import javax.swing.JPanel;
 import nvisio.menu.VPanelMenu;
 import nvisio.unit.Port;
 import nvisio.unit.Unit;
+import nvisio.utils.Draw;
 
 /**
  *
@@ -107,7 +108,8 @@ public class VPanel extends JPanel {
         Point panelL = this.getLocationOnScreen();
         Point portCenterLocation = VPanel.getConnectingPort().getCenterLocation();
 
-        g.drawLine((int) portCenterLocation.getX(),
+        Draw.drawArrowLine(g,
+                (int) portCenterLocation.getX(),
                 (int) portCenterLocation.getY(),
                 (int) (mouseL.getX() - panelL.getX()),
                 (int) (mouseL.getY() - panelL.getY()));

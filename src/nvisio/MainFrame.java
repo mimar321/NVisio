@@ -7,7 +7,6 @@ package nvisio;
 
 import java.awt.image.BufferedImage;
 import java.io.File;
-import java.io.FileWriter;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -15,7 +14,6 @@ import javax.imageio.ImageIO;
 import javax.swing.JFileChooser;
 import nvisio.menu.VPanelMenu;
 import nvisio.unit.Port;
-import sun.awt.image.ImageAccessException;
 
 /**
  *
@@ -77,7 +75,6 @@ public class MainFrame extends javax.swing.JFrame {
         jMenuFile.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
         jMenuItemOpen.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_O, java.awt.event.InputEvent.CTRL_MASK));
-        jMenuItemOpen.setIcon(new javax.swing.ImageIcon("C:\\Users\\esinhep\\Desktop\\Open_file.png")); // NOI18N
         jMenuItemOpen.setText("Open XML");
         jMenuItemOpen.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseReleased(java.awt.event.MouseEvent evt) {
@@ -92,7 +89,6 @@ public class MainFrame extends javax.swing.JFrame {
         jMenuFile.add(jMenuItemOpen);
 
         jMenuItemSaveXml.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_S, java.awt.event.InputEvent.CTRL_MASK));
-        jMenuItemSaveXml.setIcon(new javax.swing.ImageIcon("C:\\Users\\esinhep\\Desktop\\document_save.png")); // NOI18N
         jMenuItemSaveXml.setText("Save as XML");
         jMenuItemSaveXml.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -101,7 +97,6 @@ public class MainFrame extends javax.swing.JFrame {
         });
         jMenuFile.add(jMenuItemSaveXml);
 
-        jMenuItemSaveImage.setIcon(new javax.swing.ImageIcon("C:\\Users\\esinhep\\Desktop\\Preview-icon.png")); // NOI18N
         jMenuItemSaveImage.setText("Save as image");
         jMenuItemSaveImage.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

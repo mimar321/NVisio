@@ -10,14 +10,11 @@ import java.awt.event.ActionListener;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 import javax.swing.JFileChooser;
 import javax.swing.JMenuItem;
 import javax.swing.JPopupMenu;
-import nvisio.VPanel;
+import nvisio.sim.InputParser;
 import nvisio.unit.Unit;
-import nvisio.unit.beans.UnitBean;
 
 /**
  *
@@ -28,24 +25,22 @@ public class UnitMenu extends JPopupMenu {
     
     public UnitMenu(Unit unit){
         this.unit = unit;
+
+        if (this.unit.getUnitType() == Unit.UnitType.DIGITAL_UNIT) {
+            JMenuItem addHist = new JMenuItem("Import SOCPRI history");
+            addHist.addActionListener(new ActionListener() { 
+                @Override public void actionPerformed(ActionEvent e) {  importSocpriHistory(); } });
         
-        JMenuItem propItem = new JMenuItem("Properties");
-        JMenuItem addHist = new JMenuItem("Import SOCPRI history");
-        
-        propItem.addActionListener(new ActionListener() { 
+            this.add(addHist);
+        } else if (this.unit.getUnitType() == Unit.UnitType.XMU03){
+            JMenuItem changeDir = new JMenuItem("Change direction");
+            changeDir.addActionListener(new ActionListener() {
                 @Override
-                public void actionPerformed(ActionEvent e) {  unitShowProperties(); } });
-        addHist.addActionListener(new ActionListener() { 
-                @Override
-                public void actionPerformed(ActionEvent e) {  importSocpriHistory(); } });
-        
-        this.add(propItem);
-        this.add(addHist);
-    }
-    
-    private void unitShowProperties(){
-        UnitBean bean = new UnitBean(this.unit);
-        VPanel.getPropertyFrame(bean).show();
+                public void actionPerformed(ActionEvent ae) {
+                    actionChangeDirection();
+                }
+            });
+        }
     }
     
     private void importSocpriHistory(){
@@ -58,8 +53,7 @@ public class UnitMenu extends JPopupMenu {
                 BufferedReader br = new BufferedReader(new FileReader(fi));
                 String line;
                 while ((line = br.readLine()) != null){
-                    //System.out.println(line);
-                    parseHistoryEntry(line);
+                    InputParser.parseHistoryEntry(line);
                 }
             } catch (Exception e){
                 // TODO
@@ -68,53 +62,9 @@ public class UnitMenu extends JPopupMenu {
         }
     }
     
-    // TODO move to other class or something
-    private void parseHistoryEntry(String line){
-        if (line.startsWith("[")){
-            parseTimestamp(line);
-            parseEvent(line);
-            parseSyncPortStatus(line);
-        }
+    private void actionChangeDirection(){
+        
     }
     
-    private boolean parseTimestamp(String line){
-        try{
-            DateTimeFormatter formater = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss.n");
-            LocalDateTime dateTime = LocalDateTime.parse(line.substring(1, line.indexOf("]")), formater);
-            System.out.println(dateTime.toString());
-            return true;
-        }catch (Exception e){
-            System.out.println(e.getMessage());
-            return false;
-        }
-    }
-    
-    private boolean parseEvent(String line){
-        try{
-            System.out.println(getSubstring(line, "event = ", ", "));
-            return true;
-        }catch (Exception e){
-            System.out.println(e.getMessage());
-            return false;
-        }
-    }
-    
-    private boolean parseSyncPortStatus(String line){
-        try{
-            System.out.println(getSubstring(line, "syncPortStatus = [ ", " ],"));
-            return true;
-        }catch (Exception e){
-            System.out.println(e.getMessage());
-            return false;
-        }
-    }
-    
-    
-    private String getSubstring(String input, String firstDelimiter, String lastDelimiter){
-        int indexOfFirstDelimiter = input.indexOf(firstDelimiter);
-        int indexOfSecondDelimiter = input.indexOf(lastDelimiter, indexOfFirstDelimiter);
-        return input.substring(
-                indexOfFirstDelimiter + firstDelimiter.length(), 
-                indexOfSecondDelimiter);
-    }
+
 }
